@@ -1,4 +1,4 @@
-//### isArray
+//###1 isArray
 
 function isArray(a){
     if(typeof a=='object'){
@@ -11,7 +11,7 @@ isArray('skylab')
 
 /******************************************/
 
-//### joinElements
+//###2 joinElements
 
 function joinElements(a){
     return a.toString()
@@ -20,7 +20,7 @@ joinElements(['John','George','Ringo','Paul'])
 
 /******************************************/
 
-//### array_Clone
+//###3 array_Clone
 
 function array_Clone(a){
     return a.slice(0)
@@ -30,7 +30,7 @@ console.log(array_Clone([1, 2, [4, 0]]))
 
 /******************************************/
 
-//### findDifferences
+//###4 findDifferences
 
 function findDifferences(a,b){
 
@@ -38,7 +38,7 @@ findDifferences([1, 2, 3], [100, 2, 1, 10])
 
 /******************************************/
 
-//### Sum and Product
+//###5 Sum and Product
 
 function sumAndProduct(a){
     var sum = 0;
@@ -53,7 +53,7 @@ console.log(sumAndProduct([1,2,3]))
 
 /******************************************/
 
-//### addItems
+//###6 addItems
 
 function addItems(a){
     var item = prompt ('Introduce what you want that the array shows up:');
@@ -64,7 +64,7 @@ console.log(addItems([]));
 
 /******************************************/
 
-//### generateArrayLength
+//###7 generateArrayLength
 
 function array_range(a,b){
     var array = [];
@@ -80,7 +80,7 @@ console.log(array_range(-6, 4));
 
 /******************************************/
 
-//### last
+//###8 last
 
 function last(a,n){
     var b = a.reverse();
@@ -96,7 +96,7 @@ console.log(last([7, 9, 0, -2],6));
 
 /******************************************/
 
-//### sortItems
+//###9 sortItems
 
 function sortItems(a){
     return a.sort()
@@ -105,7 +105,7 @@ console.log(sortItems([ 3, 8, 7, 6, 5, -4, 3, 2, 1 ]))
 
 /******************************************/
 
-//### getRandom
+//###10 getRandom
 
 function getRandom(a){
     var b = a.length
@@ -115,35 +115,35 @@ console.log(getRandom([a,b,c,d,e])
 
 /******************************************/
 
-//### findDuplicates
+//###11 findDuplicates
 
 /******************************************/
 
-//### mergeArrays
+###12 mergeArrays
 
 /******************************************/
 
-//### separateEven
+###13 separateEven
 
 /******************************************/
 
-//### mostFrequentItem
+//###14 mostFrequentItem
 
 /******************************************/
 
-//### moveElement
+//###15 moveElement
 
 /******************************************/
 
-//### swapCase
+//###16 swapCase
 
 /******************************************/
 
-//### Print elements array
+//###17 Print elements array
 
 /******************************************/
 
-//### array_filled (string)
+//###18 array_filled (string)
 
 /******************************************/
 
