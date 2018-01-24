@@ -1,0 +1,66 @@
+*{
+    background-color: rgb(187, 211, 186);
+}
+
+header{
+    width: 100%;
+    display: inline-flex;
+    border-bottom: 2px solid rgb(19, 71, 17);
+}
+
+.image{
+    float: left;
+    width: 20%;
+}
+
+.name{
+    float: left;
+    width: 40%;
+}
+
+aside{
+    float: left;
+    font-size: 20px;
+    color: green;
+    font-weight: bold;
+}
+
+.personal{
+    display: inline-flex;
+}
+
+.personal>aside{
+    width: 170px;
+}
+
+.work{
+    display: inline-flex;
+}
+
+.work>aside{
+    width: 170px;
+}
+
+.skill{
+    display: inline-flex;
+}
+
+.skill>aside{
+    width: 170px;
+}
+
+.education{
+    display: inline-flex;
+}
+
+.education>aside{
+    width: 170px;
+}
+
+.recommendations{
+    display: inline-flex;
+}
+
+.recommendations>aside{
+    width: 170px;
+}
