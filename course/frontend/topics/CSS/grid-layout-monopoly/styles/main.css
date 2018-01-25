@@ -1,0 +1,67 @@
+main{
+    height: 100%;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(5, 80px);
+    grid-template-rows: repeat(5, 80px);
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:white;
+    border: solid 2px black;
+}
+
+div>div{
+    border: none;
+}
+
+div:nth-child(7){
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 5;
+    border: none;
+}
+div:nth-child(7)>div{
+    border: none;
+    font-size: 60px;
+    transform: rotate( -45deg );
+}
+
+.top{
+    transform: rotate( -180deg);
+    border-top: 30px solid green;
+}
+
+.right{
+    transform: rotate( -90deg);
+    border-top: 30px solid orange;
+}
+
+.bottom{
+    border-top: 30px solid red;
+}
+
+.left{
+    transform: rotate( -270deg);
+    border-top: 30px solid blue;
+}
+
+.one{
+    transform: rotate(135deg);
+}
+
+.five{
+    transform: rotate(225deg);
+}
+
+.nine{
+    transform: rotate(-45deg);
+}
+
+.thirteen{
+    transform: rotate(45deg);
+}
