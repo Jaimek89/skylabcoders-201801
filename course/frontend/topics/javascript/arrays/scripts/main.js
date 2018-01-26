@@ -32,9 +32,16 @@ console.log(array_Clone([1, 2, [4, 0]]))
 
 //###4 findDifferences
 
-function findDifferences(a, b) { }
-
-findDifferences([1, 2, 3], [100, 2, 1, 10])
+function findDifferences(arr1, arr2) {
+    var arr3 = [];
+    arr1 = arr1.concat(arr2);
+    for (var i = 0; i < arr1.length; i++) {
+        if (arr3.indexOf(arr1[i]) !== -1);
+        arr3.push(arr1[i]);
+    }
+    return arr3;
+}
+console.log(findDifferences([1, 2, 3], [100, 2, 1, 10]))
 
 /******************************************/
 
@@ -68,12 +75,12 @@ console.log(addItems([]));
 
 function array_range(a, b) {
     var array = [];
-    var i=a;
-    do{
+    var i = a;
+    do {
         array.push(i)
         i++
     }
-    while (array.length<b)
+    while (array.length < b)
     return array;
 }
 console.log(array_range(1, 4));
@@ -112,11 +119,22 @@ function getRandom(a) {
     var b = a.length
     return a[Math.floor(Math.random() * (b - 0) + 1)];
 }
-console.log(getRandom([a, b, c, d, e]))
+console.log(getRandom(['a', 'b', 'c', 'd', 'e']))
 
 /******************************************/
 
 //###11 findDuplicates
+
+function findDuplicates(a) {
+    var arr = []
+    for (var i=0; i<a.length; i++){
+        if (a.indexOf(a[i],(i+1)) > -1){
+            arr.push(a[i])
+        }
+    }
+    return arr
+}
+findDuplicates(['a','b','c','b','c','d'])
 
 /******************************************/
 
@@ -134,10 +152,11 @@ function mergeArray(arr1, arr2) {
     var arr3 = [];
     arr1 = arr1.concat(arr2);
     for (var i = 0; i < arr1.length; i++) {
-        if (arr3.indexOf(arr1[i]) === -1);
+        if (arr3.indexOf(arr1[i]) === -1) {
             arr3.push(arr1[i]);
         }
-        return arr3;
+    }
+    return arr3;
 }
 mergeArray([1, 2, 3], [2, 30, 1])
 
@@ -151,8 +170,8 @@ mergeArray([1, 2, 3], [2, 30, 1])
 function separateEven(num) {
     var str = num.toString();
     var result = [str[0]];
-    for (var x = 1; x < str.length; x++) {
-        ((str[x - 1] % 2 === 0) && (str[x] % 2 === 0)) ? result.push('-', str[x]) : result.push(str[x]);
+    for (var i = 1; i < str.length; i++) {
+        ((str[i - 1] % 2 === 0) && (str[i] % 2 === 0)) ? result.push('-', str[i]) : result.push(str[i]);
     }
     console.log(result.join(''));
 }
@@ -180,92 +199,92 @@ separateEven(025468)
 
 /******************************************/
 
-//### Sum squares
+//###19 Sum squares
 
 /******************************************/
 
-//### removeDuplicate
+//###20 removeDuplicate
 
 /******************************************/
 
-//### showChoices
+//###21 showChoices
 
 /******************************************/
 
-//### showLeapYears
+//###22 showLeapYears
 
 /******************************************/
 
-//### shuffleArray
+//###23 shuffleArray
 
 /******************************************/
 
-//### binarySearch
+//###24 binarySearch
 
 /******************************************/
 
-//### sumPositions
+//###25 sumPositions
 
 /******************************************/
 
-//### generateArraySteps
+//###26 generateArraySteps
 
 /******************************************/
 
-//### flattenArray
+//###27 flattenArray
 
 /******************************************/
 
-//### unionArray
+//###28 unionArray
 
 /******************************************/
 
-//### removeFalsy
+//###29 removeFalsy
 
 /******************************************/
 
-//### first
+//###30 first
 
 /******************************************/
 
-//### sortObjectsTitle
+//###31 sortObjectsTitle
 
 /******************************************/
 
-//### findPairSum
+//###32 findPairSum
 
 /******************************************/
 
-//### validValues
+//###33 validValues
 
 /******************************************/
 
-//### longestCommon
+//###34 longestCommon
 
 /******************************************/
 
-//### fillArray
+//###35 fillArray
 
 /******************************************/
 
-//### removeElement
+//###36 removeElement
 
 /******************************************/
 
-//### findArrayWithElement
+//###37 findArrayWithElement
 
 /******************************************/
 
-//### emptyArray
+//###38 emptyArray
 
 /******************************************/
 
-//### getNthLargest
+//###39 getNthLargest
 
 /******************************************/
 
-//### array_filled (numeric)
+//###40 array_filled (numeric)
 
 /******************************************/
 
-//### filterFalsy
+//###41 filterFalsy
