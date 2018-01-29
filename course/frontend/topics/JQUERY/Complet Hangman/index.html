@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+    <body>
+
+        <header class="header">
+            <h1>Hangman</h1>
+            <img src="Hangman_Stlye.png" class="image">
+            <br>
+        </header>
+
+        <main>
+            <div class="play">
+                <p class="final_word"></p>
+                <input type="button" class="button" id="button_play" value="PLAY!">
+                <br>
+            </div>
+
+            <div class="word">
+
+                <form class="formulary">
+                    <textarea class="game_word" placeholder="Set your word!"></textarea>
+                    <label>How many attempts do you need?</label>
+                    <input type="number" name="quantity" min="1" max="30" id="number_list">
+                    <input type="submit" class="button" id="button_word" value="GO!">
+                </form>
+                <br>
+
+            </div>
+
+            <div class="game">
+                <form>
+                    <p class="game_attempts"></p>
+                    <p class="hidden_word"></p>
+                    <label>Enter a character or word</label>
+                    <textarea class="game_tried" placeholder=""></textarea>
+                    <input type="submit" class="button" id="button_game" value="TRY!">
+                </form>
+                <br>
+            </div>
+
+        </main>
+        <script src="vendor/jquery/3.3.1/jquery-3.3.1.min.js"></script>
+        <script src="script/main.js"></script>
+    </body>
+
+</html>
