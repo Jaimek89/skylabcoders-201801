@@ -1,0 +1,25 @@
+.navbar {
+  background-color: gainsboro; }
+
+.jumbotron {
+  background-image: url("../material/site_showcase_bg.jpg");
+  color: white;
+  width: 100%; }
+
+.main_footer {
+  background-color: green;
+  width: 100%; }
+
+.icon_app_store {
+  width: 30%;
+  height: 60%; }
+
+.icon_google_play {
+  width: 30%;
+  height: 60%; }
+
+.icon_site_phone {
+  width: 60%;
+  height: 90%; }
+
+/*# sourceMappingURL=main.css.map */
