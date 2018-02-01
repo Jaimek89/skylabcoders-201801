@@ -13,7 +13,7 @@ $(document).ready(function () {
             success: function (beers) {
 
                 beers.forEach(function (beer) {
-                    $('.list-group1').append('<li class="list-group-item"><a href="#" data="' + beer.id + '">' + beer.name + '</a></li>');
+                    $('.list-group1').append('<li class="list-group-item"><a data-toggle="modal" data-target="#exampleModal" href="#" data="' + beer.id + '">' + beer.name + '</a></li>');
                     console.log(beer)
                 });
             }
@@ -22,18 +22,17 @@ $(document).ready(function () {
 
     $('.list-group1').on('click', 'a', function (e) {
         e.preventDefault();
-
+            
         var idToSearch = $(this).attr('data');
-
+        console.log('STEP list group click ' + idToSearch)
         $.ajax({
-            url: 'https://quiet-inlet-67115.herokuapp.com/api/beer/8OucfG' + idToSearch,
+            url: 'https://quiet-inlet-67115.herokuapp.com/api/beer/' + idToSearch,
             success: function (beer) {
-
-                $('#exampleModalLabel').append(beer.name)
-                $('.modal-body').append(beer.style.description)
+                console.log('STEP ajax called ' + beer.name)
+                $('#exampleModalLabel').text(beer.name)
+                $('.modal-body').text(beer.style.description)
                 $('.modal-body').append('<img class="mx-auto d-block" src="' + beer.labels.icon + '">')
 
-                $('.modal').show();
             }
         })
 
