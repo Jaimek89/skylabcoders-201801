@@ -1,4 +1,30 @@
+body{
+  background: linear-gradient(90deg,#2ebd59,#00794a);
+}
+
+.image{
+  height: 80%;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 60%;
+}
+
 .form-signin{
   margin: 0 auto;
   width: 60%;
+}
+
+#button{
+  margin: 20px auto;
+  border: 2px solid white;
+}
+
+ul{
+  margin: 0 auto;
+  width: 50%;
+}
+
+li:hover{
+  background: linear-gradient(90deg,#2ebd59,#00794a) !important;
+  color: white !important;
 }

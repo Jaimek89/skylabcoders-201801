@@ -13,14 +13,14 @@
 <body>
   <form class="form-signin">
     <div class="text-center mb-4">
-      <h1 class="h3 mb-3 font-weight-normal">Which is your favourite artist?</h1>
+      <img class="image" src="images/Spotify-Stock.png">
     </div>
 
     <div class="form-label-group">
       <input type="text" id="text" class="form-control" placeholder="Artist" required autofocus>
     </div>
 
-    <button id="button" class="btn btn-lg btn-primary btn-block" type="submit">Look for it!</button>
+    <button id="button" class="btn btn-lg btn-success btn-block" type="submit">Look for it!</button>
   </form>
 
   <div>
@@ -37,6 +37,22 @@
     <ul class="list-group3">
     </ul>
   </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          </div>
+        </div>
+      </div>
+    </div>
 
   <script src="vendor/jquery/3.3.1/jquery-3.3.1.min.js"></script>
   <script src="vendor/popper/1.12.9/popper.min.js"></script>
