@@ -1,6 +1,9 @@
+//v.1.0.1 --> Actualizamos los $.ajax por fetch
+
 $(document).ready(function () {
 
-    const token = 'BQDshn1KJHh5zKgZUegJWhOEM5UmOaZUY6ohB1g036OIoFob8HP8_havZPeUJT45otoLRdZfLd7tuaiIieY-hgsVatw-Vep8XSODfThg9G_rVrgaJpCIot04N1Rk-77xL6cIACvT'
+    const token = 'BQAtD4zEAyWlTb-J-EoKIITOoaJ3-KWex1zSoyjeySUV_fx1txkvSfEP8xZdOo-udVf8OSzu0J_ERqtpk1DDG7VNKji83jzXwWfP1YbLuCbvHN5RGFvMcNzcx-h6E6-y96mAFPxz'
+    const header = {"Authorization": "Bearer "+ token }
 
     $('#button').on('click', function (e) {
         e.preventDefault()
@@ -8,10 +11,21 @@ $(document).ready(function () {
         let query = $('#text').val()
         $('form').trigger('reset')
 
-        $.ajax({
+        $('.list-group1').empty()
+        $('.list-group2').empty()
+        $('.list-group3').empty()
+
+        fetch('https://api.spotify.com/v1/search?q=' + query + '&type=artist',{header})
+            .then(res => res.json())
+            .then(artists.items.forEach(function (artist) {
+                $('.list-group1').append('<li class="list-group-item list-group-item-action href="#" value="' + artist.id + '">' + artist.name + '</li>')
+
+            }))
+
+       /* $.ajax({
 
             url: 'https://api.spotify.com/v1/search?q=' + query + '&type=artist',
-            headers: {"Authorization": "Bearer "+ token },
+            header,
             success: function (singer) {
 
                 console.log(singer)
@@ -23,7 +37,7 @@ $(document).ready(function () {
     
                 })
             }
-        })
+        })*/
     })
 
     $('.list-group1').on('click', 'li', function (e) {
@@ -34,7 +48,7 @@ $(document).ready(function () {
             
         $.ajax({
             url: 'https://api.spotify.com/v1/artists/' + idToSearch + '/albums',
-            headers: {"Authorization": "Bearer "+ token },
+            header,
             success: function (album) {
 
                 console.log(album)
@@ -55,7 +69,7 @@ $(document).ready(function () {
             
         $.ajax({
             url: 'https://api.spotify.com/v1/albums/' + songToSearch,
-            headers: {"Authorization": "Bearer "+ token },
+            header,
             success: function (song) {
                 
                 console.log(song)
@@ -76,7 +90,7 @@ $(document).ready(function () {
 
         $.ajax({
             url: 'https://api.spotify.com/v1/tracks/' + trackToSearch,
-            headers: {"Authorization": "Bearer "+ token },
+            header,
             success: function (play) {
 
                 $('.modal-body').empty()
