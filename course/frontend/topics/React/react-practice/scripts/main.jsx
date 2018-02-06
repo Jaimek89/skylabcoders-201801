@@ -12,7 +12,7 @@ ReactDOM.render(
 
 'use strict';
 
-const helloWorld ='Hello, World!!!!!!!!!!!!!!!!!!!!!'
+const helloWorld ='Hello, World!'
 
 function salutation(){
     return helloWorld
