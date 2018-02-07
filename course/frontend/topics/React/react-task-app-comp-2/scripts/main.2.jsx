@@ -68,9 +68,18 @@ class TaskInput extends React.Component {
             this.addTask()
         }
         }>
-            <input type="text" className="round-blue-input" placeholder="Input task" onChange={this.keepInput} value={this.state.input} />
+            <input 
+                type="text" 
+                className="round-blue-input" 
+                placeholder="Input task" 
+                onChange={this.keepInput} 
+                value={this.state.input} 
+            />
             &nbsp;
-        <button type="submit" className="round-red-button">Add</button>
+            <button 
+                type="submit" 
+                className="round-red-button"
+            >Add</button>
         </form>
     }
 }

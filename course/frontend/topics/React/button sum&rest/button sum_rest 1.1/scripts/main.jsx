@@ -19,8 +19,8 @@ class App extends React.Component {
         return (
             <div>
                 <Label number = {this.state.number} />
-                <Button onClick = {this.handleSum} literal = 'Suma'/>
-                <Button onClick = {this.handleRest} literal = 'Resta'/>
+                <Button onClick = {this.handleSum} name = 'Suma'/>
+                <Button onClick = {this.handleRest} name = 'Resta'/>
             </div>
         )
             
@@ -31,12 +31,13 @@ class Button extends React.PureComponent {
 
     render() {
         return(
-            <button onClick={ this.props.onClick }>{this.props.literal}</button>
+            <button onClick={ this.props.onClick }>{this.props.name}</button>
         )
     }
 }
 
 class Label extends React.PureComponent {
+    
     render() {
         return(
             <p>{ this.props.number }</p>
