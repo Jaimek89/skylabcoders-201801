@@ -1,8 +1,11 @@
 'use strict';
 
 class TaskApp extends React.Component {
-    state = {
-        tasks: []
+    constructor() {
+        super()
+        this.state = {
+            tasks: []
+        }
     }
 
     addTask = (task) => {
@@ -41,7 +44,7 @@ class TaskInput extends React.Component {
     constructor() {
         super()
         
-        state = {
+        this.state = {
             input: ''
         }
     
