@@ -6,7 +6,7 @@
 const spotifyApi = {
     url: "https://api.spotify.com/v1/",
 
-    token: "BQCXXVMmb22CC8n_TUG4u4t0NF9LtJXUx2XeBA8rnqn5NHiqK7KK7-oyBm1gs-mIcmGWkLRxQN7d-3cRrPGpPb5C-chfyUOypA2qN3QKO0_mmYem28SrZwOFNrVnriH9xNCy5jK5",
+    token: "BQAUMvcHnMc2GIulg2Fu0n47FbLgy1xVRH4DoX6XVP19nXTVeMvJ6e-f72R8lVentqEQIUvcvYd9tLgC8xv1bmkWRhhNi_PrA4OnyWwbrbfR-dnQdLe_SZXB_dCNyfYifvAi3U7r",
 
     getHeader: function () {
         return {
