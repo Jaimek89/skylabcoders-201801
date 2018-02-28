@@ -1,8 +1,9 @@
 require('dotenv').config()
 
-const axios = require('axios')
+// const axios = require('axios')
 const express = require ('express')
 const app = express()
+const axiosCall = require ('./axios.js')
 
 const bodyParser = require ('body-parser')
 const formBodyParser = bodyParser.urlencoded({ extended: false })
@@ -10,29 +11,26 @@ const formBodyParser = bodyParser.urlencoded({ extended: false })
 app.set('view engine', 'pug')
 
 app.get('/', (req, res) => {
-    axios.get('http://localhost:5000/api/tasks')
-    .then(obj => res.render('form', {tasks: obj.data}))
+
+    axiosCall.list(res)
 })
 
 app.post('/add', formBodyParser, (req, res) => {
     const {text} = req.body
 
-    axios.post('http://localhost:5000/api/tasks', { text: text })
-    res.redirect('/')
+    axiosCall.create(res, text)
 })
 
 app.get('/done/:id', (req, res) => {
     const { id } = req.params
 
-    axios.put(`http://localhost:5000/api/tasks/${id}`)
-    res.redirect('/')
+    axiosCall.edit(res, id)
 })
 
 app.get('/delete/:id', (req, res) => {
     const { id } = req.params
 
-    axios.delete(`http://localhost:5000/api/tasks/${id}`)
-    res.redirect('/')
+    axiosCall.delete(res, id)
 })
 
 const port = process.env.PORT
