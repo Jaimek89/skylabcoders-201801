@@ -1,0 +1,23 @@
+html
+ head
+ body
+  form(action="/add", method="post")
+   input(type="text", name="text", placeholder="Write your task")
+   input(type="submit", value="ADD")
+
+  if tasks.length>0
+    if tasks.some(task => !task.done)
+      h5 List-Todo
+      ul
+        each task in tasks
+          if !task.done
+            li=task.text 
+              a(href=`/done/${task.id}`) ✅
+
+    if tasks.some(task => task.done)
+      h5 List-Done
+      ul
+        each task in tasks
+          if task.done
+            li=task.text 
+              a(href=`/delete/${task.id}`) ❌

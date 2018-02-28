@@ -14,18 +14,10 @@ app.get('/api/tasks', (req,res) => {
 
 app.post('/api/tasks', jsonBodyParser, (req,res) => {
     const { text } = req.body
-    let index
 
     if(!text) res.json(ko('Task registration failed.','You dont defined task'))
 
-    if((taskslist.length) === 0){
-        index = 1;
-    }
-    else{
-        index = taskslist[taskslist.length -1].id + 1
-    }
-
-    taskslist.push({id:index,text,done:false})
+    taskslist.push({ id: new Date().getTime() ,text ,done:false })
 
     res.json(ok('Task registration succeeded.'))
 })
