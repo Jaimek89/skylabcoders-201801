@@ -1,0 +1,44 @@
+html
+    head
+        body
+            h3 Dates form
+            form(action="/add" method="post")
+                h6 Name  
+                  input(type="text" name="name" placeholder="Insert name" required)
+                h6 Surname  
+                  input(type="text" name="surname" placeholder="Insert surname" required)
+                h6 Email  
+                  input(type="email" name="email" placeholder="Insert email" required)
+                h6 Username  
+                  input(type="text" name="username" placeholder="Insert username" required)
+                h6 Password  
+                  input(type="password" name="password" placeholder="Insert password" required)
+                input(type="submit" value="Register in")
+
+            if data.length
+                h5 List Names
+                form(action="/" method="get")
+                    input(type="text" name="filter" placeholder="Filter by name")
+                    input(type="submit" value="🔎")
+                ul
+                    each user in data
+                        li=user.name
+                            a(href=`/show/${user._id}`) ✏️    
+                            if _id == user._id
+
+                                form(action="/update", method="post")
+                                    h6 Name  
+                                        input(type="text" name="name" value=user.name)
+                                    h6 Surname  
+                                        input(type="text" name="surname" value=user.surname)
+                                    h6 Email  
+                                        input(type="email" name="email" value=user.email)
+                                    h6 Username  
+                                        input(type="text" name="username" value=user.username)
+                                        input(type="hidden" name="id" value=user._id)
+                                    input(type="submit" value="Update it")  
+                                    a(href=`/delete/${user._id}`) 🗑        
+
+                form(action="/deleteAll" method="get")
+                  input(type="submit" value="Remove all users")
+                

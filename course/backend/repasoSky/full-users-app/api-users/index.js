@@ -29,6 +29,8 @@ router.put('/update/:id',jsonBodyParser, (req, res)=>{
     const {id} =req.params
     const {name, password, newPassword} = req.body
 
+    console.log(name, password, newPassword, id)
+
     const user = users.find(user=>user.id == id)
 
     if(!user)
@@ -44,7 +46,7 @@ router.put('/update/:id',jsonBodyParser, (req, res)=>{
 
 router.delete('/delete/:id', jsonBodyParser, (req, res)=>{
     const {id} = req.params
-    const {password} = req.params
+    const {name, password} = req.body
 
     const index = users.findIndex(user => user.id == id)
 
@@ -58,9 +60,9 @@ router.delete('/delete/:id', jsonBodyParser, (req, res)=>{
     res.json(ok('el usuario se ha eliminado correctamente'))
 })
 
-function ok(message, data) {
+function ok(message, item) {
     const res = { status: 'OK', message }
-    if (data) res.data = data
+    if (item) res.item = item
     return res
 }
 

@@ -1,9 +1,8 @@
 /**
- * @version 1.0.0
+ * @version 1.0.1
  * 
- * First aplication withouth error handler
+ * Adding function ok/ko
  */
-
 require('dotenv').config()
 
 const express = require ('express')
@@ -22,19 +21,23 @@ app.get('/api/tasks', (req, res) => {
 app.post('/api/tasks', jsonBodyParser, (req, res) => {
     const { text } = req.body
 
+    if(!text) return res.json('Text is missing')
+
     taskslist.push({ id: new Date().getTime().toString(), text, done: false})
 
-    res.json('Task registration succeeded')
+    res.json(ok('Task registration succeeded'))
 })
 
 //Mark a task as done
 app.put('/api/tasks/:id', (req, res) => {
     const { id } = req.params
 
+    if(!id) return res.json('Id is missing')
+
     const task = taskslist.find(task => task.id === id )
     task.done = true
 
-    res.json('Task update succeeded')
+    res.json(ok('Task update succeeded'))
 })
 
 //Delete a task
@@ -44,7 +47,7 @@ app.delete('/api/tasks/:id', (req, res) => {
     const index = taskslist.findIndex(task => task.id === id )
     taskslist.splice(index,1)
 
-    res.json('Task delete succeeded')
+    res.json(ok('Task delete succeeded'))
 })
 
 //Get all done tasks
@@ -65,7 +68,7 @@ app.get('/api/tasks/todo', (req, res) => {
 app.delete('/api/tasks', (req, res) => {
     taskslist.splice(0)
 
-    res.json('Tasks delete succeeded')
+    res.json(ok('Tasks delete succeeded'))
 })
 
 //Update task
@@ -76,8 +79,22 @@ app.patch('/api/tasks/:id', jsonBodyParser, (req, res) => {
     const task = taskslist.find(task => task.id === id )
     task.text = text
 
-    res.json('Task update succeeded')
+    res.json(ok('Task update succeeded'))
 })
+
+function ok(message, error){
+    const res = { status: 'OK', message }
+
+    if(data) res.data = data
+    return res
+}
+
+function ko(message, error){
+    const res = { status: 'KO', message }
+
+    if (error) res.error = error
+    return res
+}
 
 const port = process.env.PORT
 
