@@ -14,7 +14,7 @@ function App() {
         <Footer />
       </div>
     </HashRouter>
-  );
+  )
 }
 
-export default App;
+export default App

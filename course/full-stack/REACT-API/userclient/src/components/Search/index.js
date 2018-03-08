@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
-import api_client from '../../api-client.js';
+import api_client from 'api-client'
+
+api_client.protocol = 'http'
+api_client.host = 'localhost'
+api_client.port = '5000'
 
 class Search extends Component {
 
     constructor() {
         super()
         this.state = {
-            users : []
+            users: []
         }
     }
 
-    componentDidMount(){
-        api_client.getList().then(users => users)
+    componentDidMount() {
+        api_client.list().then(users => this.setState({users}))
     }
 
     render() {
@@ -47,6 +51,9 @@ class Search extends Component {
                 <div className="text-center">
                     <h3 className="display-4">Error on edit</h3>
                 </div>
+                <ul>
+                    {this.state.users.map(user => <li key={user.id}>{`${user.name} ${user.surname}`}</li>)}
+                </ul>
             </div>
         )
     }
