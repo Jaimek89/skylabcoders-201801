@@ -51,9 +51,9 @@ class Search extends Component {
                 <div className="text-center">
                     <h3 className="display-4">Error on edit</h3>
                 </div>
-                <ul>
+                {/* <ul>
                     {this.state.users.map(user => <li key={user.id}>{`${user.name} ${user.surname}`}</li>)}
-                </ul>
+                </ul> */}
             </div>
         )
     }

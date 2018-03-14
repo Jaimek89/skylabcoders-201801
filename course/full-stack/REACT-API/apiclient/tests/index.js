@@ -9,16 +9,40 @@ api.protocol = API_PROTOCOL
 api.host = API_HOST
 api.port = API_PORT
 
+let token
+
+beforeEach(done => {
+    api.login('u', 'p')
+        .then(res => {
+            assert.equal(res.status, 'OK', `results should be OK, but got error: ${res.error}`)
+
+            assert(res.data && res.data.token, 'should return data token')
+
+            token = res.data.token
+
+            done()
+        })
+        .catch(done)
+})
+
 describe('api', () => {
 
-    before(() => {
+    true && it('should login', done => {
+        api.login('u', 'p')
+            .then(res => {
+                assert.equal(res.status, 'OK', `results should be OK, but got error: ${res.error}`)
 
+                assert(res.data && res.data.token, 'should return data token')
+
+                done()
+            })
+            .catch(done)
     })
 
-    it('should list', done => {
-        api.list()
+    true && it('should list', done => {
+        api.list(token)
             .then(res => {
-                assert.equal(res.status, 'OK', 'results should be OK')
+                assert.equal(res.status, 'OK', `results should be OK, but got error: ${res.error}`)
 
                 assert(res.data && res.data.length > 0, 'should return data array')
 
@@ -27,10 +51,10 @@ describe('api', () => {
             .catch(done)
     })
 
-    it('should create', done => {
-        api.create('n', 's', 'e', 'u', 'p')
+    true && it('should create', done => {
+        api.create(token, 'n', 's', 'e', 'u2', 'p')
             .then(res => {
-                assert.equal(res.status, 'OK', 'results should be OK')
+                assert.equal(res.status, 'OK', `results should be OK, but got error: ${res.error}`)
 
                 assert(res.data && res.data.id, 'should return data id')
 
@@ -39,44 +63,58 @@ describe('api', () => {
             .catch(done)
     })
 
-    it('should update', done => {
-        api.create('n1', 's1', 'e1', 'u1', 'p1')
-            .then(res => api.update(res.data.id, 'n2', 's2', 'e2', 'u1', 'u2', 'p1', 'p1')
-                .then(res => {
-                    assert.equal(res.status, 'OK', 'results should be OK')
+    true && it('should update', done => {
+        api.create(token, 'n', 's', 'e', 'u8', 'p')
+            .then(res => {
+                assert.equal(res.status, 'OK', `results should be OK, but got error1: ${res.error}`)
 
-                    done()
-                }))
+                return api.update(token, res.data.id, 'n', 's', 'e', 'u8', 'p', 'u89', 'p')
+
+            })
+            .then(res => {
+                assert.equal(res.status, 'OK', `results should be OK, but got error2: ${res.error}`)
+
+                done()
+            })
             .catch(done)
     })
 
-    it('should delete', done => {
-        api.create('n3', 's3', 'e3', 'u3', 'p3')
-            .then(res => api.remove(res.data.id, 'u3', 'p3')
-                .then(res => {
-                    assert.equal(res.status, 'OK', 'results should be OK')
+    true && it('should delete', done => {
+        api.create(token, 'n', 's', 'e', 'u22', 'p')
+        .then(res => {
+            assert.equal(res.status, 'OK', `results should be OK, but got error: ${res.error}`)
+            
+            return api.remove(token, res.data.id, 'u22', 'p')
+        })
+        .then(res => {
+            assert.equal(res.status, 'OK', `results should be OK, but got error: ${res.error}`)
 
-                    done()
-                }))
-            .catch(done)
+            done()
+        })
+        .catch(done)
     })
 
-    it('should retrieve', done => {
-        api.create('n4', 's4', 'e4', 'u4', 'p4')
-            .then(res => api.retrieve(res.data.id)
-                .then(res => {
-                    assert.equal(res.status, 'OK', 'results should be OK')
+    true &&  it('should retrieve', done => {
+        api.create(token, 'n', 's', 'e', 'u5', 'p')
+        .then(res => {
+            assert.equal(res.status, 'OK', `results should be OK, but got error: ${res.error}`)
+        
+            return api.retrieve(token, res.data.id)
+        })
+        .then(res => {
+            assert.equal(res.status, 'OK', `results should be OK, but got error: ${res.error}`)
 
-                    const user = res.data
+            const user = res.data
 
-                    assert(user, 'should return data user')
-                    assert.equal(user.name, 'n4')
-                    assert.equal(user.surname, 's4')
-                    assert.equal(user.email, 'e4')
-                    assert.equal(user.username, 'u4')
+            assert(user, 'should return data user')
 
-                    done()
-                }))
-            .catch(done)
+            assert.equal(user.name, 'n')
+            assert.equal(user.surname, 's')
+            assert.equal(user.email, 'e')
+            assert.equal(user.username, 'u5')
+
+            done()
+        })
+        .catch(done)
     })
 })

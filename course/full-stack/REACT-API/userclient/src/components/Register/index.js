@@ -5,9 +5,6 @@ function Register(){
     return(
         <div>
             <div>
-                <header className="text-center">
-                    <h1 className="display-3">USER-APP</h1>
-                </header>
                 <form id="register" action="/register" method="post" className="text-center">
                     <legend className="display-4">New user</legend>
                     <input type="text" className="form-control" id="Name" placeholder="Name" />

@@ -1,7 +1,5 @@
 const rp = require('request-promise')
 
-// TODO implement api client
-
 const api = {
     _baseUrl() {
         with (this) {
@@ -9,35 +7,42 @@ const api = {
         }
     },
 
-    _call(method, path, body) {
-        // return rp(`${this._baseUrl()}/${path}`)
-        //     .then(res => JSON.parse(res))
-        return rp({
+    _call(method, path, body, token) {
+        const options = {
             method,
             uri: `${this._baseUrl()}/${path}`,
-            body,
             json: true
-        })
+        }
+
+        if (body) options.body = body
+
+        if (token) options.headers = { authorization: `Bearer ${token}`}
+
+        return rp(options)
     },
 
-    list() {
-        return this._call('get', 'users').then(res => res.data)
+    login(username, password) {
+        return this._call('post', 'login', { username, password })
     },
 
-    create(name, surname, email, username, password) {
-        return this._call('post', 'user', { name, surname, email, username, password })
+    list(token) {
+        return this._call('get', 'users', undefined, token)
     },
 
-    update(id, name, surname, email, username, newUsername, password, newPassword){
-        return this._call('put', `user/${id}`, { name, surname, email, username, newUsername, password, newPassword})
+    create(token, name, surname, email, username, password) {
+        return this._call('post', 'user', { name, surname, email, username, password }, token)
     },
 
-    remove(id,username,password){
-        return this._call('delete', `user/${id}`, { username, password })
+    update(token, id, name, surname, email, username, password, newUsername, newPassword){
+        return this._call('put', `user/${id}`, { name, surname, email, username, password, newUsername, newPassword}, token)
     },
 
-    retrieve(id){
-        return this._call('get', `user/${id}`)
+    remove(token, id, username, password){
+        return this._call('delete', `user/${id}`, { username, password }, token)
+    },
+
+    retrieve(token, id){
+        return this._call('get', `user/${id}`, undefined, token)
     }
 }
 
